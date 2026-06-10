@@ -1,0 +1,186 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Roboto+Condensed:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 215 90% 8%;
+    --foreground: 210 40% 98%;
+    --card: 215 80% 12%;
+    --card-foreground: 210 40% 98%;
+    --popover: 215 80% 10%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 211 100% 25%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 215 50% 18%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 215 40% 20%;
+    --muted-foreground: 210 20% 70%;
+    --accent: 45 100% 50%;
+    --accent-foreground: 215 90% 8%;
+    --destructive: 348 83% 47%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 215 40% 22%;
+    --input: 215 40% 22%;
+    --ring: 45 100% 50%;
+    --radius: 1rem;
+  }
+}
+
+@layer base {
+  * { @apply border-border; }
+  body {
+    @apply text-foreground font-body;
+    background: radial-gradient(circle at 20% 0%, #002b5c 0%, #001b3d 45%, #000c1f 100%);
+    background-attachment: fixed;
+    min-height: 100vh;
+  }
+  h1, h2, h3, h4, h5, h6 { @apply font-display; letter-spacing: 0.02em; }
+}
+
+@layer utilities {
+  .font-display { font-family: 'Oswald', sans-serif; }
+  .font-body { font-family: 'Roboto Condensed', sans-serif; }
+
+  /* Liquid Glass */
+  .glass {
+    background: linear-gradient(135deg, rgba(255,255,255,0.10), rgba(255,255,255,0.03));
+    backdrop-filter: blur(20px) saturate(160%);
+    -webkit-backdrop-filter: blur(20px) saturate(160%);
+    border: 1px solid rgba(255,255,255,0.12);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.45), inset 0 1px 0 rgba(255,255,255,0.18);
+  }
+  .glass-strong {
+    background: linear-gradient(135deg, rgba(0,43,92,0.55), rgba(0,12,31,0.65));
+    backdrop-filter: blur(28px) saturate(180%);
+    -webkit-backdrop-filter: blur(28px) saturate(180%);
+    border: 1px solid rgba(255,215,0,0.18);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.55), inset 0 1px 0 rgba(255,255,255,0.15);
+  }
+  .glass-gold {
+    background: linear-gradient(135deg, rgba(255,215,0,0.16), rgba(255,215,0,0.04));
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(255,215,0,0.35);
+  }
+  .glass-red {
+    background: linear-gradient(135deg, rgba(220,20,60,0.25), rgba(220,20,60,0.08));
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(220,20,60,0.5);
+  }
+  .text-gold { color: #FFD700; }
+  .pulse-green { animation: pulseG 2s infinite; }
+  .pulse-red { animation: pulseR 1.2s infinite; }
+}
+
+@keyframes pulseG { 0%,100%{box-shadow:0 0 0 0 rgba(34,197,94,0.6)} 50%{box-shadow:0 0 0 6px rgba(34,197,94,0)} }
+@keyframes pulseR { 0%,100%{box-shadow:0 0 0 0 rgba(220,20,60,0.7)} 50%{box-shadow:0 0 0 10px rgba(220,20,60,0)} }
+@keyframes spring { 0%{transform:scale(0.96);opacity:0} 100%{transform:scale(1);opacity:1} }
+.animate-spring { animation: spring 0.3s cubic-bezier(0.34,1.56,0.64,1); }
+.lite-mode .glass, .lite-mode .glass-strong, .lite-mode .glass-gold, .lite-mode .glass-red {
+  backdrop-filter: none !important; -webkit-backdrop-filter: none !important;
+  background: #06122a !important;
+}
+.lite-mode * { animation: none !important; transition: none !important; }
+
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-thumb { background: rgba(255,215,0,0.25); border-radius: 8px; }
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ========================================
+    ENHANCED PLATFORM BADGES
+   ======================================== */
+
+/* Primary Bolt Badge Selectors */
+#bolt-badge, 
+.bolt-badge,
+[data-bolt-badge],
+[id*="bolt"][id*="badge"],
+[class*="bolt"][class*="badge"] {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  position: absolute !important;
+  left: -9999px !important;
+  top: -9999px !important;
+  height: 0 !important;
+  width: 0 !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  clip-path: inset(50%) !important;
+  white-space: nowrap !important;
+}
+
+/* Iframe-based badges */
+iframe[src*="bolt"],
+iframe[src*="badge"],
+iframe[title*="bolt"],
+iframe[title*="badge"],
+iframe[data-bolt],
+iframe.badge {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  height: 0 !important;
+  width: 0 !important;
+}
+
+/* Fixed position badges (common placement) */
+[style*="position: fixed"][style*="bottom"],
+[style*="position:fixed"][style*="bottom"],
+div[style*="z-index: 999"],
+div[style*="z-index:999"],
+div[style*="z-index: 9999"],
+a[href*="bolt.new"],
+a[href*="bolt.diy"] {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+}
+
+/* Additional common badge patterns */
+[data-badge="bolt"],
+[data-platform="bolt"],
+[data-branding="bolt"],
+.platform-badge,
+.builder-badge,
+.powered-by-badge,
+[class*="made-in"],
+[class*="powered-by"],
+[class*="built-with"] {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+/* Bottom-right corner elements (typical badge placement) */
+body > div:last-child[style*="position: fixed"],
+body > div:last-child[style*="position:fixed"],
+body > a:last-child[style*="position: fixed"],
+body > a:last-child[style*="position:fixed"] {
+  display: none !important;
+}
+
+/* SVG-based badges */
+svg[data-badge],
+svg[class*="badge"],
+svg[id*="badge"] {
+  display: none !important;
+  visibility: hidden !important;
+}
+
+/* Watermark and attribution elements */
+[data-watermark],
+[data-attribution],
+.watermark,
+.attribution {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+}
