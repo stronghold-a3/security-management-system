@@ -1,0 +1,56 @@
+(index.html is a source file, so no need to add it to .gitignore)
+
+Since the only modified file is index.html (a source file) and there are no build artifacts, dependencies, or temporary files in the changes, the .gitignore should remain empty.
+
+(empty - output nothing)
+
++++ .gitignore (修改后)
+```
+# Environment variables
+.env
+.env.local
+.env.*
+
+# Dependencies
+node_modules/
+venv/
+.venv/
+__pycache__/
+*.egg-info/
+dist/
+build/
+target/
+.gradle/
+
+# Logs and temporary files
+*.log
+*.tmp
+*.swp
+*.swo
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Editor/IDE files
+.vscode/
+.idea/
+*.pyc
+*.class
+*.o
+*.exe
+*.dll
+*.so
+*.a
+*.obj
+*.out
+
+# Coverage reports
+coverage/
+htmlcov/
+.coverage
+
+# Cache directories
+.mypy_cache/
+.pytest_cache/
+```
