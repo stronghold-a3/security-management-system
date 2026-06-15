@@ -15,6 +15,10 @@
     "test": "vitest",
     "test:coverage": "vitest --coverage",
     "test:e2e": "cypress run"
+    "test:e2e": "playwright test",
+    "lint": "eslint . --fix",
+    "type-check": "tsc --noEmit",
+    "prepare": "husky install"
   }
 }
   "dependencies": {
@@ -95,11 +99,13 @@
     "typescript": "^5.5.3",
     "typescript-eslint": "^8.0.1",
     "vite": "^5.4.1"
-     "vitest": "^1.x.x",
-    "@testing-library/react": "^14.x.x",
     "@testing-library/jest-dom": "^6.x.x",
     "cypress": "^13.x.x",
-    "husky": "^8.x.x",
-    "lint-staged": "^15.x.x"
+    "@playwright/test": "latest",
+    "@testing-library/react": "latest",
+    "@sentry/react": "latest",
+    "vitest": "latest",
+    "husky": "latest",
+    "lint-staged": "latest"
   }
 }
