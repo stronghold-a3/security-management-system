@@ -1,0 +1,22 @@
+/**
+ * Husky Pre-commit Hook Configuration
+ * Runs linting and tests before committing
+ */
+
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+# Run lint-staged
+npx lint-staged
+
+# Run type checking
+echo "🔍 Type checking..."
+npx tsc --noEmit
+
+# Exit with error if any step failed
+if [ $? -ne 0 ]; then
+  echo "❌ Pre-commit checks failed"
+  exit 1
+fi
+
+echo "✅ Pre-commit checks passed"
