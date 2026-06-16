@@ -23,6 +23,7 @@ app.use((req, res, next) => {
 });
 
 // Rest of your app...
-app.listen(3001, () => {
-  console.log('Server running on https://localhost:3001');
+const port = process.env.PORT || 3000;
+app.listen(port, () => {
+  console.log(`Server running on port ${port}`);
 });
