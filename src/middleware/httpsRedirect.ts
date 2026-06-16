@@ -24,7 +24,6 @@ const defaultConfig: HTTPSRedirectConfig = {
   allowedInsecureOrigins: [],
   redirectStatusCode: 301, // Permanent redirect
 };
-
 /**
  * Client-side HTTPS enforcement
  * Detects if the application is served over HTTP and redirects to HTTPS
@@ -109,11 +108,13 @@ export const httpsRedirectMiddleware = (config: HTTPSRedirectConfig = defaultCon
  * });
  * ```
  */
+// Update getViteHTTPSConfig in src/middleware/httpsRedirect.ts
 export const getViteHTTPSConfig = (useHTTPS: boolean = false) => {
+  // Remove hardcoded port: 8080 to let Vite use process.env.PORT or defaults
   if (!useHTTPS) {
-    return {
-      host: '::',
-      port: 8080,
+    return { host: '::' };
+  }
+  return { host: '::', https: true };
     };
   }
 
